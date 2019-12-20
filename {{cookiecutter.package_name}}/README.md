@@ -1,5 +1,4 @@
-{{ cookiecutter.package_name }}
-{{ cookiecutter.package_name|count * "=" }}
+# {{ cookiecutter.package_name }}
 
 {% if cookiecutter.readme_pypi_badge -%}
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
@@ -15,22 +14,12 @@
 
 {{ cookiecutter.package_description }}
 
-Usage
------
+## Usage
 
-Installation
-------------
+## Installation
 
-Requirements
-^^^^^^^^^^^^
+## Licence
 
-Compatibility
--------------
-
-Licence
--------
-
-Authors
--------
+## Authors
 
 `{{ cookiecutter.package_name }}` was written by `{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>`_.

@@ -3,8 +3,12 @@ cookiecutter-pypackage-minimal
 
 An opinionated, minimal [cookiecutter](https://github.com/audreyr/cookiecutter) template for Python packages, and some guidelines for Python packaging.
 
-Usage
------
+## Changes compared to the fork base
+
+ * Removed Python 2 support. It is time to forget about it.
+ * Changed to markdown for in-repository documentation.
+
+## Usage
 
     pip install cookiecutter
     git clone https://github.com/kragniz/cookiecutter-pypackage-minimal.git
@@ -14,15 +18,14 @@ You should then change the classifiers in `{{ package_name }}/setup.py` - it is 
 
 Fill out the README, and - if necessary - [choose a license](https://choosealicense.com/) for the project.
 
-Explanation
------------
+## Explanation
 
 The decisions `cookiecutter-pypackage-minimal` makes should all be explained here.
 
 ### README
 
-* **README should use reStructuredText format**
-  This is the format used by most Python tools, is expected by [setuptools](https://setuptools.readthedocs.io), and can be used by [Sphinx](http://sphinx-doc.org/).
+* **README in Markdown**
+  This format is slowly superseding rst.
 * **As few README files as possible**
   Additional README files (AUTHORS, CHANGELOG, etc) should be left to the user to create when necessary.
 
