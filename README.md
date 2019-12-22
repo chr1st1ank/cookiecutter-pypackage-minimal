@@ -7,6 +7,7 @@ An opinionated, minimal [cookiecutter](https://github.com/audreyr/cookiecutter) 
 
  * Removed Python 2 support. It is time to forget about it.
  * Changed to markdown for in-repository documentation.
+ * Removed tox. Instead a github actions workflow for Python code quality checks was added.
 
 ## Usage
 
@@ -50,12 +51,8 @@ The decisions `cookiecutter-pypackage-minimal` makes should all be explained her
 
 ### Testing
 
-* **Use [Tox](https://tox.readthedocs.io) to manage test environments**
-  Tox provides isolation, runs tests across multiple Python versions, and ensures the package can be installed.
 * **Uses [pytest](https://docs.pytest.org) as the default test runner**
   This can be changed easily, though pytest is a easier, more powerful test library and runner than the standard library's unittest.
-* **Define testing dependencies in `tox.ini`**
-  Avoid duplicating dependency definitions, and use `tox.ini` as the canonical description of how the unittests should be run.
 * **`tests` directory should not be a package**
   The `tests` directory should not be a Python package unless you want to define some fixtures.
   But the best practices are to use [PyTest fixtures](https://docs.pytest.org/en/latest/fixture.html) which provides a better solution.

@@ -1,0 +1,76 @@
+name: Code Quality
+
+on: [push]
+env: 
+  STD_PYTHON: "3.7"
+
+jobs:
+  flake8:
+    name: "Flake8 stylecheck"
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: "Git checkout"
+        uses: actions/checkout@v1
+      - name: Set up Python ${{ env.STD_PYTHON }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ env.STD_PYTHON }}
+      - name: Install flake8
+        run: |
+          python --version
+          pip3 --version
+          pip3 install flake8
+      - name: Syntax check
+        # stop the build if there are Python syntax errors or undefined names
+        run: python3 -m flake8 --count --select=E9,F63,F7,F82 --show-source --statistics {{ cookiecutter.package_name }} tests
+      - name: Style check
+        # exit-zero treats all errors as warnings.
+        run: python3 -m flake8 --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics {{ cookiecutter.package_name }} tests
+        
+  pylint:
+    name: "Pylint static code analysis"
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: "Git checkout"
+        uses: actions/checkout@v1
+      - name: Set up Python ${{ env.STD_PYTHON }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ env.STD_PYTHON }}
+      - name: Install pylint
+        run:  |
+          python --version
+          pip3 --version
+          pip3 install pylint setuptools
+      - name: Code analysis
+        run: python3 -m pylint {{ cookiecutter.package_name }} || exit 0
+          
+  # Add Radon, black, mypy? (see https://realpython.com/python-code-quality/)
+  test:
+    name: Test
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.5, 3.6, 3.7]
+
+    steps:
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: "Git checkout"
+        uses: actions/checkout@v1
+      - name: Install pipenv
+        run:  |
+          python --version
+          pip3 --version
+          pip3 install pip pipenv setuptools
+          pipenv install --dev
+          pipenv install importlib_metadata
+      - name: Run tests
+        run:  |
+          python --version
+          pip3 --version
+          pipenv run pytest tests
