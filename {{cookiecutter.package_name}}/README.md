@@ -6,12 +6,6 @@
     :alt: Latest PyPI version
 {%- endif %}
 
-{% if cookiecutter.readme_travis_badge -%}
-.. image:: {{ cookiecutter.readme_travis_url }}.png
-   :target: {{ cookiecutter.readme_travis_url }}
-   :alt: Latest Travis CI build status
-{%- endif %}
-
 {{ cookiecutter.package_description }}
 
 ## Usage

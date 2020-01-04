@@ -9,7 +9,5 @@
 
     "use_pipenv": "n",
 
-    "readme_pypi_badge": true,
-    "readme_travis_badge": true,
-    "readme_travis_url": "https://travis-ci.org/borntyping/cookiecutter-pypackage-minimal"
+    "readme_pypi_badge": true
 }
