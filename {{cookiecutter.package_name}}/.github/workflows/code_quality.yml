@@ -9,12 +9,14 @@ jobs:
     name: "Flake8 stylecheck"
     runs-on: [ubuntu-latest]
     steps:
+{% raw %}
       - name: "Git checkout"
         uses: actions/checkout@v1
       - name: Set up Python ${{ env.STD_PYTHON }}
         uses: actions/setup-python@v1
         with:
           python-version: ${{ env.STD_PYTHON }}
+{% endraw %}
       - name: Install flake8
         run: |
           python --version
@@ -26,7 +28,8 @@ jobs:
       - name: Style check
         # exit-zero treats all errors as warnings.
         run: python3 -m flake8 --count --exit-zero --max-complexity=10 --max-line-length=100 --statistics {{ cookiecutter.package_name }} tests
-        
+
+{% raw %}
   pylint:
     name: "Pylint static code analysis"
     runs-on: [ubuntu-latest]
@@ -37,6 +40,7 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: ${{ env.STD_PYTHON }}
+{% endraw %}
       - name: Install pylint
         run:  |
           python --version
@@ -44,8 +48,9 @@ jobs:
           pip3 install pylint setuptools
       - name: Code analysis
         run: python3 -m pylint {{ cookiecutter.package_name }} || exit 0
-          
-  # Add Radon, black, mypy? (see https://realpython.com/python-code-quality/)
+
+## Add Radon, black, mypy? (see https://realpython.com/python-code-quality/)
+{% raw %}
   test:
     name: Test
 
@@ -74,3 +79,4 @@ jobs:
           python --version
           pip3 --version
           pipenv run pytest tests
+{% endraw %}
