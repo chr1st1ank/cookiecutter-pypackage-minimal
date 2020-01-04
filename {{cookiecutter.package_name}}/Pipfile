@@ -3,7 +3,7 @@ url = "https://pypi.python.org/simple"
 verify_ssl = true
 
 [dev-packages]
-advbumpversion = "*"
+bump2version = "*"
 flake8 = "*"
 coverage = "*"
 pytest = "*"
