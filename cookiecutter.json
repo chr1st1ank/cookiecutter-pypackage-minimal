@@ -1,13 +1,13 @@
 {
-    "author_name": "Louis Taylor",
-    "author_email": "louis@kragniz.eu",
+    "author_name": "chr1st1ank",
+    "author_email": "author@e-mail.com",
 
     "package_name": "cookiecutter_pypackage_minimal",
     "package_version": "0.1.0",
     "package_description": "An opinionated, minimal cookiecutter template for Python packages",
     "package_url": "https://github.com/borntyping/cookiecutter-pypackage-minimal",
 
-    "use_pipenv": "n",
+    "use_pipenv": "y",
 
     "readme_pypi_badge": true
 }

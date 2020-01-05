@@ -1,4 +1,5 @@
-# {{ cookiecutter.package_name }}
+{{ cookiecutter.package_name }}
+{{ cookiecutter.package_name|count * "~" }}
 
 {% if cookiecutter.readme_pypi_badge -%}
 .. image:: https://img.shields.io/pypi/v/{{ cookiecutter.package_name }}.svg
@@ -8,12 +9,24 @@
 
 {{ cookiecutter.package_description }}
 
-## Usage
+Features
+========
 
-## Installation
+Usage
+=====
 
-## Licence
+Installation
+============
 
-## Authors
+Licence
+=======
+
+Contributing
+============
+Interested in particular changes? Found a bug?
+Please read {{ cookiecutter.package_url }}/CONTRIBUTING.md for instructions on how to participate.
+
+Authors
+=======
 
 `{{ cookiecutter.package_name }}` was written by {{ cookiecutter.author_name }}.
